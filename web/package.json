@@ -1,0 +1,23 @@
+{
+  "name": "@file-tunnel/ui",
+  "version": "0.1.0",
+  "description": "Lazy-loadable File Tunnel web component",
+  "type": "module",
+  "exports": {
+    ".": "./dist/ftnl-file-picker.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.9.0"
+  },
+  "license": "MIT"
+}
