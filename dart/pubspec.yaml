@@ -3,7 +3,7 @@ description: Host-controlled File Tunnel picker for Flutter on mobile, desktop, 
 version: 0.1.0
 repository: https://github.com/file-tunnel/ftnl-ui-components
 environment:
-  sdk: ^3.12.0
+  sdk: ">=3.11.0 <4.0.0"
   flutter: ">=3.44.0"
 dependencies:
   flutter:
