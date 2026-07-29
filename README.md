@@ -43,11 +43,12 @@ so applications can upgrade the transport independently of presentation.
 ## Validate
 
 ```bash
-(cd ios && swift package dump-package)
-(cd dart && flutter pub get && flutter analyze && flutter test)
-(cd web && npm install && npm test)
+nix develop --command agent-check
 ```
 
-Android CI builds the AAR because local builds require an Android SDK.
+The Nix shell supplies Flutter, Node.js, JDK 21, Gradle 9, and repository
+linters. Swift uses the host Xcode toolchain on macOS. Android CI provisions
+the licensed platform SDK separately; local Android checks run automatically
+when `ANDROID_HOME` is set.
 
 MIT licensed.

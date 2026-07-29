@@ -8,3 +8,5 @@ pubspec.lock
 .gradle/
 local.properties
 android/.idea/
+.cache/
+.direnv/
