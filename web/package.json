@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/qrcode": "^1.5.5",
-    "jsdom": "^26.0.0",
+    "jsdom": "^30.0.1",
     "typescript": "^5.9.0"
   },
   "license": "MIT"
