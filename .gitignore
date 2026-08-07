@@ -10,3 +10,7 @@ local.properties
 android/.idea/
 .cache/
 .direnv/
+tmp
+temp
+tmp/worktrees
+temp/worktrees
