@@ -1,6 +1,17 @@
 # shellcheck shell=bash
 set -euo pipefail
 
+# Keep the Nix toolchain's artifacts separate from a developer's global Rust
+# toolchain; rustc metadata is intentionally not cross-version compatible.
+export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-$PWD/.cache/nix-agent/cargo-target}"
+
+(
+  cd rust
+  cargo fmt --check
+  cargo clippy --locked --all-targets --all-features -- -D warnings
+  cargo test --locked --all-targets --all-features
+)
+
 (
   cd web
   npm ci

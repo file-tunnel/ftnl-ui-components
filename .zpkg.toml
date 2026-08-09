@@ -2,9 +2,9 @@
 org = "file-tunnel"
 name = "ftnl-ui-components"
 version = "0.1.0"
-description = "Embeddable File Tunnel pickers for web, Flutter, SwiftUI, and Android Compose"
+description = "Embeddable File Tunnel pickers for Rust, web, Flutter, SwiftUI, and Android Compose"
 license = "MIT"
-keywords = ["ui", "file-transfer", "flutter", "swiftui", "android"]
+keywords = ["ui", "file-transfer", "rust", "flutter", "swiftui", "android"]
 
 [package.repository]
 vcs = "git"
@@ -13,12 +13,15 @@ url = "https://github.com/file-tunnel/ftnl-ui-components"
 [publish]
 include_readme = true
 tag_format = "v{version}"
-smoke_test = "test -f \"$ZED_PKG_TEST_TARGET/web/package.json\" && test -f \"$ZED_PKG_TEST_TARGET/dart/pubspec.yaml\" && test -f \"$ZED_PKG_TEST_TARGET/ios/Package.swift\" && test -f \"$ZED_PKG_TEST_TARGET/android/settings.gradle.kts\""
+smoke_test = "test -f \"$ZED_PKG_TEST_TARGET/rust/Cargo.toml\" && test -f \"$ZED_PKG_TEST_TARGET/web/package.json\" && test -f \"$ZED_PKG_TEST_TARGET/dart/pubspec.yaml\" && test -f \"$ZED_PKG_TEST_TARGET/ios/Package.swift\" && test -f \"$ZED_PKG_TEST_TARGET/android/settings.gradle.kts\""
 exclude = [".env", ".env.*", ".direnv/**", ".zed/**", ".zed-pack/**", "tmp/**", "**/*.log", ".DS_Store", "**/node_modules/**", "**/.dart_tool/**", "**/build/**", "**/.gradle/**", "**/.swiftpm/**"]
 
 [targets.repository]
 dir = "."
 name = "ftnl-ui-components-repository"
+
+[targets.rust]
+dir = "rust"
 
 [targets.nodejs]
 dir = "web"

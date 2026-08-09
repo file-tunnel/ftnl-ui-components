@@ -1,0 +1,19 @@
+[package]
+name = "ftnl-ui-components"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82"
+description = "Host-owned File Tunnel picker state and optional egui renderer"
+license = "MIT"
+repository = "https://github.com/file-tunnel/ftnl-ui-components"
+
+[features]
+default = []
+egui = ["dep:egui", "dep:qrcode"]
+
+[dependencies]
+egui = { version = "0.31", optional = true, default-features = false }
+qrcode = { version = "0.14", optional = true, default-features = false }
+
+[lints.rust]
+unsafe_code = "forbid"

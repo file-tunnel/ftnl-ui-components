@@ -19,10 +19,24 @@
           name = "agent-check";
           runtimeInputs = [
             pkgs.bash
+            pkgs.cargo
+            pkgs.clippy
             pkgs.coreutils
             pkgs.git
+            pkgs.rustc
+            pkgs.rustfmt
           ];
-          text = builtins.readFile ./.nix/agent-check.sh;
+          text = ''
+            export PATH="${
+              pkgs.lib.makeBinPath [
+                pkgs.cargo
+                pkgs.clippy
+                pkgs.rustc
+                pkgs.rustfmt
+              ]
+            }:$PATH"
+            ${builtins.readFile ./.nix/agent-check.sh}
+          '';
         };
     in
     {
