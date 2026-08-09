@@ -4,6 +4,7 @@
 build/
 node_modules/
 dist/
+target/
 pubspec.lock
 .gradle/
 local.properties

@@ -4,8 +4,8 @@ These instructions apply to this repository and every directory beneath it.
 
 ## Repository role
 
-- This repository owns File Tunnel presentation components for Swift,
-  Android/Compose, Flutter, and the web.
+- This repository owns File Tunnel presentation components for Rust/egui,
+  Swift, Android/Compose, Flutter, and the web.
 - Components render host-owned state; they do not own transport credentials,
   backend lifecycle, or durable capability storage.
 - Keep the source-choice and picker-state behavior aligned across platforms

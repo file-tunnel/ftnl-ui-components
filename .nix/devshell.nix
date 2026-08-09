@@ -5,6 +5,8 @@ pkgs.mkShell {
   ]
   ++ (with pkgs; [
     actionlint
+    cargo
+    clippy
     flutter
     git
     gradle_9
@@ -13,6 +15,8 @@ pkgs.mkShell {
     nixfmt
     nodejs_22
     ripgrep
+    rustc
+    rustfmt
     shellcheck
     shfmt
   ]);
