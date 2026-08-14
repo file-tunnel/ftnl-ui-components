@@ -6,6 +6,7 @@ node_modules/
 dist/
 target/
 pubspec.lock
+flutter_*.log
 .gradle/
 local.properties
 android/.idea/
