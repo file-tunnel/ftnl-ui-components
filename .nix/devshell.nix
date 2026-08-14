@@ -14,11 +14,13 @@ pkgs.mkShell {
     jq
     nixfmt
     nodejs_22
+    python312
     ripgrep
     rustc
     rustfmt
     shellcheck
     shfmt
+    tlaplus
   ]);
 
   JAVA_HOME = pkgs.jdk21.home;

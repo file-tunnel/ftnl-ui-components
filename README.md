@@ -49,6 +49,12 @@ packages produce Rust libraries, linkable frameworks, or AARs; keep their
 host-facing state protocol stable so applications can upgrade the transport
 independently of presentation.
 
+The executable control contract is generated from
+`formal/picker-machine.json`. TLC exhaustively checks its session-authority,
+single-in-flight, terminal-state, and invalid-event stuttering invariants; each
+platform suite verifies that its generated transition API accepts exactly the
+same state/event pairs. See `formal/README.md` for the proof boundary.
+
 ## Validate
 
 ```bash
