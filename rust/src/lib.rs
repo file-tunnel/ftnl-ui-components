@@ -6,6 +6,8 @@
 //! keep the sensitive pairing URI and pass a short-lived borrowed view to the
 //! renderer for the duration of one frame.
 
+pub mod picker_machine;
+
 /// The same lifecycle rendered by the SwiftUI, Compose, Flutter, and web
 /// packages in this repository.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -262,5 +264,32 @@ mod tests {
             ..PickerView::idle()
         };
         assert_eq!(view.validate(), Err(ViewError::MissingFailureMessage));
+    }
+
+    #[test]
+    fn generated_machine_accepts_exactly_the_formally_declared_pairs() {
+        use picker_machine::{
+            PICKER_MACHINE_EVENTS, PICKER_MACHINE_STATES, PICKER_MACHINE_TRANSITIONS,
+        };
+
+        for &state in PICKER_MACHINE_STATES {
+            for &event in PICKER_MACHINE_EVENTS {
+                let expected =
+                    PICKER_MACHINE_TRANSITIONS
+                        .iter()
+                        .find_map(|&(source, candidate, target)| {
+                            (source == state && candidate == event).then_some(target)
+                        });
+                let actual = state.transition(event);
+                match expected {
+                    Some(target) => assert_eq!(actual, Ok(target)),
+                    None => {
+                        let error = actual.expect_err("invalid transition must be rejected");
+                        assert_eq!(error.state, state);
+                        assert_eq!(error.event, event);
+                    }
+                }
+            }
+        }
     }
 }

@@ -23,8 +23,10 @@
             pkgs.clippy
             pkgs.coreutils
             pkgs.git
+            pkgs.python312
             pkgs.rustc
             pkgs.rustfmt
+            pkgs.tlaplus
           ];
           text = ''
             export PATH="${

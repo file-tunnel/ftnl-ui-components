@@ -1,6 +1,31 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { JSDOM } from "jsdom";
+import {
+  InvalidPickerTransitionError,
+  pickerMachineEvents,
+  pickerMachineStates,
+  pickerMachineTransitions,
+  transitionPickerState,
+} from "../dist/picker-machine.js";
+
+test("generated machine accepts exactly the formally declared pairs", () => {
+  for (const state of pickerMachineStates) {
+    for (const event of pickerMachineEvents) {
+      const expected = pickerMachineTransitions.find(
+        (transition) => transition.from === state && transition.event === event,
+      );
+      if (expected) {
+        assert.equal(transitionPickerState(state, event), expected.to);
+      } else {
+        assert.throws(
+          () => transitionPickerState(state, event),
+          InvalidPickerTransitionError,
+        );
+      }
+    }
+  }
+});
 
 test("custom element offers both source choices", async () => {
   const dom = new JSDOM("<!doctype html>", { url: "https://host.test/" });

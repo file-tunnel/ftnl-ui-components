@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+export 'src/picker_machine.g.dart';
+
 sealed class FileTunnelPickerState {
   const FileTunnelPickerState();
 }

@@ -1,5 +1,7 @@
 import QRCode from "qrcode";
 
+export * from "./picker-machine.js";
+
 export interface FileProgress {
   id: string;
   name: string;
