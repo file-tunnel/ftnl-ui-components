@@ -485,11 +485,11 @@ RejectedEventsStutter == rejected => <<state, lastEvent>> \\notin LegalPairs
 
 def outputs(model: dict[str, Any]) -> dict[pathlib.Path, str]:
     return {
-        ROOT / "rust/src/picker_machine.rs": rust(model),
-        ROOT / "dart/lib/src/picker_machine.g.dart": dart(model),
-        ROOT / "web/src/picker-machine.ts": typescript(model),
-        ROOT / "android/library/src/main/java/dev/filetunnel/ui/PickerMachine.kt": kotlin(model),
-        ROOT / "ios/Sources/FileTunnelUI/PickerMachine.swift": swift(model),
+        ROOT / "langs/rust/src/picker_machine.rs": rust(model),
+        ROOT / "langs/dart/lib/src/picker_machine.g.dart": dart(model),
+        ROOT / "langs/typescript/src/picker-machine.ts": typescript(model),
+        ROOT / "langs/kotlin/library/src/main/java/dev/filetunnel/ui/PickerMachine.kt": kotlin(model),
+        ROOT / "langs/swift/Sources/FileTunnelUI/PickerMachine.swift": swift(model),
         ROOT / "formal/PickerStateMachine.tla": tla(model),
         ROOT / "formal/PickerStateMachine.cfg": "SPECIFICATION Spec\nINVARIANT TypeInvariant\nINVARIANT SessionAuthorityInvariant\nINVARIANT SingleInFlightInvariant\nINVARIANT TerminalInvariant\nINVARIANT RejectedEventsStutter\n",
     }

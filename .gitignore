@@ -9,7 +9,7 @@ pubspec.lock
 flutter_*.log
 .gradle/
 local.properties
-android/.idea/
+langs/kotlin/.idea/
 .cache/
 .direnv/
 tmp

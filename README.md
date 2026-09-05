@@ -15,11 +15,11 @@ capabilities.
 
 | Platform | Package | Integration |
 |---|---|---|
-| Rust desktop | `rust/` · `ftnl-ui-components` | Host-owned state + optional `egui` renderer |
-| iOS/macOS | `ios/` · `FileTunnelUI` | Swift Package dynamic library + SwiftUI |
-| Android | `android/` · `dev.filetunnel.ui` | Android AAR + Jetpack Compose |
-| Flutter | `dart/` · `ftnl_ui` | Android, iOS, macOS, Windows, Linux, web |
-| Web | `web/` · `@file-tunnel/ui` | Lazy-loadable standards-based custom element |
+| Rust desktop | `langs/rust/` · `ftnl-ui-components` | Host-owned state + optional `egui` renderer |
+| iOS/macOS | `langs/swift/` · `FileTunnelUI` | Swift Package dynamic library + SwiftUI |
+| Android | `langs/kotlin/` · `dev.filetunnel.ui` | Android AAR + Jetpack Compose |
+| Flutter | `langs/dart/` · `ftnl_ui` | Android, iOS, macOS, Windows, Linux, web |
+| Web | `langs/typescript/` · `@file-tunnel/ui` | Lazy-loadable standards-based custom element |
 
 ## Shared state contract
 
