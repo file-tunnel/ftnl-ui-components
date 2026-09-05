@@ -13,7 +13,7 @@ url = "https://github.com/file-tunnel/ftnl-ui-components"
 [publish]
 include_readme = true
 tag_format = "v{version}"
-smoke_test = "test -f \"$ZED_PKG_TEST_TARGET/rust/Cargo.toml\" && test -f \"$ZED_PKG_TEST_TARGET/web/package.json\" && test -f \"$ZED_PKG_TEST_TARGET/dart/pubspec.yaml\" && test -f \"$ZED_PKG_TEST_TARGET/ios/Package.swift\" && test -f \"$ZED_PKG_TEST_TARGET/android/settings.gradle.kts\""
+smoke_test = "test -f \"$ZED_PKG_TEST_TARGET/langs/rust/Cargo.toml\" && test -f \"$ZED_PKG_TEST_TARGET/langs/typescript/package.json\" && test -f \"$ZED_PKG_TEST_TARGET/langs/dart/pubspec.yaml\" && test -f \"$ZED_PKG_TEST_TARGET/langs/swift/Package.swift\" && test -f \"$ZED_PKG_TEST_TARGET/langs/kotlin/settings.gradle.kts\""
 exclude = [".env", ".env.*", ".direnv/**", ".zed/**", ".zed-pack/**", "tmp/**", "**/*.log", ".DS_Store", "**/node_modules/**", "**/.dart_tool/**", "**/build/**", "**/.gradle/**", "**/.swiftpm/**"]
 
 [targets.repository]
@@ -21,10 +21,10 @@ dir = "."
 name = "ftnl-ui-components-repository"
 
 [targets.rust]
-dir = "rust"
+dir = "langs/rust"
 
 [targets.nodejs]
-dir = "web"
+dir = "langs/typescript"
 adapter = "node"
 
 [targets.nodejs.native]
@@ -33,7 +33,7 @@ package = "@file-tunnel/ui"
 forge = ["github-packages", "gitlab-packages", "bitbucket-packages"]
 
 [targets.flutter]
-dir = "dart"
+dir = "langs/dart"
 adapter = "dart"
 
 [targets.flutter.native]
@@ -41,10 +41,10 @@ registry = "pub.dev"
 package = "ftnl_ui"
 
 [targets.swift]
-dir = "ios"
+dir = "langs/swift"
 
 [targets.kotlin]
-dir = "android"
+dir = "langs/kotlin"
 adapter = "java"
 
 [scripts]
