@@ -20,3 +20,4 @@ temp/worktrees
 # Sanctioned scratch locations - AGENTS.md requires both, trailing-slash form
 tmp/
 temp/
+tools/language-layout/target/
