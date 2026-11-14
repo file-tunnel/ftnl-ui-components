@@ -27,6 +27,7 @@ export class FileTunnelPickerElement extends HTMLElement {
   static observedAttributes = ["pairing-uri", "state"];
   #root: ShadowRoot;
   #files: FileProgress[] = [];
+  #renderVersion = 0;
 
   constructor() {
     super();
@@ -35,6 +36,10 @@ export class FileTunnelPickerElement extends HTMLElement {
 
   connectedCallback(): void {
     void this.#render();
+  }
+
+  disconnectedCallback(): void {
+    this.#renderVersion += 1;
   }
 
   attributeChangedCallback(): void {
@@ -47,6 +52,7 @@ export class FileTunnelPickerElement extends HTMLElement {
   }
 
   async #render(): Promise<void> {
+    const version = ++this.#renderVersion;
     const state = this.getAttribute("state") ?? "idle";
     const pairingUri = this.getAttribute("pairing-uri");
     this.#root.replaceChildren();
@@ -74,7 +80,16 @@ export class FileTunnelPickerElement extends HTMLElement {
       canvas.setAttribute("role", "img");
       canvas.setAttribute("aria-label", "Pairing QR code");
       wrap.append(heading, detail, canvas);
-      await QRCode.toCanvas(canvas, pairingUri, { width: 224, margin: 1, errorCorrectionLevel: "M" });
+      try {
+        await QRCode.toCanvas(canvas, pairingUri, { width: 224, margin: 1, errorCorrectionLevel: "M" });
+      } catch {
+        const fallback = document.createElement("span");
+        fallback.className = "state";
+        fallback.setAttribute("role", "status");
+        fallback.textContent = "Pairing QR code unavailable. Cancel and try again.";
+        canvas.replaceWith(fallback);
+      }
+      if (version !== this.#renderVersion || !this.isConnected) return;
       for (const file of this.#files) wrap.append(this.#file(file));
       wrap.append(this.#button("Cancel", "", "ftnl-cancel"));
     } else {
@@ -88,6 +103,7 @@ export class FileTunnelPickerElement extends HTMLElement {
             : "The tunnel is unavailable.";
       wrap.append(message);
     }
+    if (version !== this.#renderVersion || !this.isConnected) return;
     this.#root.append(style, wrap);
   }
 
